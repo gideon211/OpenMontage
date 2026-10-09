@@ -104,3 +104,8 @@ venv/
 
 # Local Wan / diffusers GPU environment
 .venv-wan/
+
+# OpenMontage local secrets (OAuth clients, tokens) — never commit
+.secrets/
+# HyperFrames telemetry disable for fork
+HYPERFRAMES_NO_TELEMETRY=1
