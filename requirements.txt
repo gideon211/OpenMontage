@@ -14,3 +14,8 @@ openai>=2.44.0         # Videos API support for Sora 2
 fastapi>=0.110
 uvicorn>=0.29
 watchfiles>=0.21
+
+# YouTube publisher (upload via free OAuth quota — no paid API key)
+google-api-python-client>=2.130.0
+google-auth-oauthlib>=1.2.0
+google-auth-httplib2>=0.2.0

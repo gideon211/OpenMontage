@@ -751,3 +751,22 @@ make test
 
 If this project looks useful to you, a ⭐ would really mean a lot — it helps others discover it too.
 
+
+---
+
+## YouTube Upload (free, OAuth)
+
+The `youtube_upload` tool publishes a finished render straight to YouTube and returns a schema-valid `publish_log` entry with the real video id and URL. It uses the YouTube Data API v3 with **user OAuth** — no paid API key.
+
+One-time setup:
+
+1. Create a project at the Google Cloud Console and enable **YouTube Data API v3**.
+2. Create **OAuth client ID** credentials of type **Desktop app**, download the JSON.
+3. Save it as `.secrets/youtube_client.json` (the `.secrets/` folder is gitignored).
+4. First upload opens a browser for Google consent; the token is cached at `.secrets/youtube_token.json` (auto-refreshed).
+
+Usage notes:
+
+- Default visibility is `unlisted` — review the link before flipping to `public`.
+- `tool.dry_run(inputs)` validates inputs and OAuth readiness without uploading.
+- `videos.insert` costs 1600 quota units against YouTube's free daily quota (default 10000 ≈ 6 uploads/day).
