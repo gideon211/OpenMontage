@@ -94,6 +94,13 @@ def main() -> int:
     brief["topic"] = "The Last Lighthouse"
     cp("research", "completed", {"research_brief": brief})
 
+    # proposal gates (stage order: research -> proposal -> script)
+    cp("proposal", "in_progress", {})
+    packet = sample_artifact("proposal_packet")
+    cp("proposal", "awaiting_human", {"proposal_packet": packet})
+    time.sleep(wait)  # "user reads the proposal on the board"
+    cp("proposal", "completed", {"proposal_packet": packet}, human_approved=True)
+
     # script gates: awaiting_human -> approved
     cp("script", "in_progress", {})
     save_artifact("script", art["script"])
